@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colorful Live Clock</title>
+  <style>
+    #clock {
+      font-size: 50px;
+      text-align: center;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <div id="clock"></div>
+
+  <script>
+    function updateClock() {
+      var date = new Date();
+      var h = date.getHours();
+      var m = date.getMinutes();
+      var s = date.getSeconds();
+
+      h = (h < 10) ? "0" + h : h;
+      m = (m < 10) ? "0" + m : m;
+      s = (s < 10) ? "0" + s : s;
+
+      var time = h + ":" + m + ":" + s;
+      document.getElementById("clock").innerHTML = time;
+      
+      var colors = ["red", "orange", "yellow", "green", "blue", "indigo", "violet"];
+      var color = colors[s % colors.length];
+      document.getElementById("clock").style.color = color;
+    }
+
+    setInterval(updateClock, 1000);
+  </script>
+</body>
+</html>
